@@ -1,7 +1,15 @@
 {
   "routes": [
     { "src": "/views/(.*)", "dest": "/views/$1" },
+<<<<<<< HEAD
     { "src": "/(.*)", "dest": "/index.cjs" }
   ],
   "builds": [{ "src": "index.cjs", "use": "@vercel/node" }]
+=======
+    { "src": "/(.*)", "dest": "/index.js" }
+  ],
+  "builds": [
+    { "src": "index.js", "use": "@vercel/node" }
+  ]
+>>>>>>> 31febf0c1dcad58a1eeaf2cf616286d1dfe47936
 }
