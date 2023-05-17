@@ -5,37 +5,6 @@ import jwt from "jsonwebtoken";
 import VerificationModel from "../Models/VerificationModel.js";
 import nodemailer from "nodemailer";
 
-// Registeration
-
-// export const registerUser = async (req, res) => {
-//   // const {username, email, password}=req.body;
-
-//   const salt = await bcrypt.genSalt(10);
-//   const hashedPassword = await bcrypt.hash(req.body.password, salt);
-//   req.body.password = hashedPassword;
-//   const newUser = new UserModel(req.body);
-//   const { email } = req.body;
-//   try {
-//     const userExists = await UserModel.findOne({ email });
-//     if (userExists) {
-//       return res.status(400).json({ message: "Email is already registered!" });
-//       // return window.alert('Invalid Credentials');
-//     }
-//     const user = await newUser.save();
-//     const token = jwt.sign(
-//       {
-//         email: user.email,
-//         id: user._id,
-//       },
-//       process.env.JWT_KEY,
-//       { expiresIn: "1h" }
-//     );
-//     res.status(200).json({ user, token });
-//   } catch (error) {
-//     res.status(500).json({ message: error.message });
-//   }
-// };
-// for sending mail
 
 export const sendVerifyMail = async (username, email, userId) => {
   try {
@@ -53,7 +22,7 @@ export const sendVerifyMail = async (username, email, userId) => {
       from: "noorulainnoor2001@gmail.com",
       to: email,
       subject: "FunZone Account Verification",
-      html: `<p> Hi ${username}, Please click <a href="https://fun-zone-cuiwah.vercel.app/verify/${userId}">here</a> to verify your email address.</p>`,
+      html: `<p> Hi ${username}, Please click <a href="https://fun-zone-cui.vercel.app/verify/${userId}">here</a> to verify your email address.</p>`,
     };
     transporter.sendMail(mailOptions, function (error, info) {
       if (error) {
