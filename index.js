@@ -26,8 +26,6 @@ import TaskRoute from "./Routes/TaskRoute.js";
 import morgan from "morgan";
 import { VerifyMail } from "./Controllers/AuthController.js";
 import path from "path";
-app.set("view engine", "ejs"); // Set EJS as the template engine
-app.set("views", path.join(__dirname, "views")); // Set the views directory
 // dotenv.config({path:'./config.env'});
 dotenv.config();
 const app = express();
@@ -38,6 +36,8 @@ app.get('/',(req, res)=>{
 })
 
 const port = process.env.PORT || 5001;
+// Set the view engine to ejs
+app.set("view engine", "ejs");
 // to serve images for public
 app.use(express.static("public"));
 app.use("/images", express.static("images"));
@@ -111,4 +111,4 @@ app.use("/supervisor", SupervisorRoute);
 app.use("/general", GeneralRoute);
 app.use("/management", MangementRoute);
 app.use("/projects", ProjectRoute);
-app.use("/tasks", TaskRoute); 
+app.use("/tasks", TaskRoute);
