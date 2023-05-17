@@ -33,7 +33,6 @@ dotenv.config();
 const app = express();
 const mongoURI = process.env.DATABASE;
 app.set("view engine", "ejs"); // Set EJS as the template engine
-app.set("views", path.join(__dirname, "views")); // Set the views directory
 app.get('/',(req, res)=>{
   app.use(express.static(path.resolve(__dirname,'client','build')))
   res.sendFile(path.resolve(__dirname,'client','build','index.html'))
