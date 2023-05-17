@@ -27,7 +27,7 @@ import morgan from "morgan";
 import { VerifyMail } from "./Controllers/AuthController.js";
 import path from "path";
 app.set("view engine", "ejs"); // Set EJS as the template engine
-app.set("views", path.join(__dirname, "views")); // Set the views directory
+
 // dotenv.config({path:'./config.env'});
 dotenv.config();
 const app = express();
@@ -35,6 +35,8 @@ const mongoURI = process.env.DATABASE;
 app.get('/',(req, res)=>{
   app.use(express.static(path.resolve(__dirname,'client','build')))
   res.sendFile(path.resolve(__dirname,'client','build','index.html'))
+    app.use(express.static(path.resolve(__dirname,'views')))
+  res.sendFile(path.resolve(__dirname,'views','email-verified.ejs'))
 })
 
 const port = process.env.PORT || 5001;
