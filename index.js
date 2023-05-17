@@ -1,4 +1,6 @@
 import express from "express";
+import { fileURLToPath } from "url";
+import { dirname, join } from "path";
 import bodyParser from "body-parser";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
@@ -26,6 +28,10 @@ import path from "path";
 dotenv.config();
 const app = express();
 const mongoURI = process.env.DATABASE;
+
+// Get the directory name using the current module's URL
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 app.get("/", (req, res) => {
   app.use(express.static(path.resolve(__dirname, "client", "build")));
