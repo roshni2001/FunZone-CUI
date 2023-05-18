@@ -41,8 +41,14 @@ export const VerifyMail = async (req, res) => {
       { _id: req.params.id },
       { $set: { isVerified: true } }
     );
-    res.render("email-verified");
+   const express = require('express');
+const app = express();
 
+
+  const message = "Your Email has been verified!";
+  const response = { message: message };
+  res.json(response);
+  
     console.log(verify);
   } catch (error) {
     res.status(500).json({ message: "error.message" });
