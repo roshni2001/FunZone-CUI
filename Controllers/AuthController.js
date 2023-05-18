@@ -6,6 +6,7 @@ import VerificationModel from "../Models/VerificationModel.js";
 import nodemailer from "nodemailer";
 
 
+
 export const sendVerifyMail = async (username, email, userId) => {
   try {
     const transporter = nodemailer.createTransport({
