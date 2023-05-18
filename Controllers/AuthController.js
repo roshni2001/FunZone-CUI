@@ -18,6 +18,7 @@ export const sendVerifyMail = async (username, email, userId) => {
         pass: "wkphemntormojhdu",
       },
     });
+    
     const mailOptions = {
       from: "noorulainnoor2001@gmail.com",
       to: email,
