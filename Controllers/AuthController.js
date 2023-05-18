@@ -46,11 +46,12 @@ export const VerifyMail = async (req, res) => {
 
   
     console.log(verify);
-  } catch (error) {
-//     res.status(500).json({ message: "error.message" });
-    const message = "Your Email has been verified!";
+  const message = "Your Email has been verified!";
   const response = { message: message };
   res.json(response);
+  } catch (error) {
+    res.status(500).json({ message: "error.message" });
+    
   }
 };
 //smtp check
