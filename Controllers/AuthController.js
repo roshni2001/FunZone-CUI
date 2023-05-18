@@ -44,17 +44,14 @@ export const VerifyMail = async (req, res) => {
       { _id: verificationId },
       { $set: { isVerified: true } }
     );
-
-    console.log(verification);
-
-    if (verification.nModified === 0) {
-      // No document was modified, handle this scenario accordingly
-      return res.status(404).json({ message: "Verification not found." });
-    }
-
-    const message = "Your Email has been verified!";
+ const message = "Your Email has been verified!";
     const response = { message: message };
     res.json(response);
+    console.log(verification);
+
+    
+
+   
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: error.message });
