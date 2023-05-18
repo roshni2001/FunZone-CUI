@@ -38,22 +38,29 @@ export const sendVerifyMail = async (username, email, userId) => {
 };
 export const VerifyMail = async (req, res) => {
   try {
-    const verify = await VerificationModel.updateOne(
-      { _id: req.params.id },
+    const verificationId = req.params.id;
+    
+    const verification = await VerificationModel.updateOne(
+      { _id: verificationId },
       { $set: { isVerified: true } }
     );
-  
 
-  
-    console.log(verify);
-  const message = "Your Email has been verified!";
-  const response = { message: message };
-  res.json(response);
+    console.log(verification);
+
+    if (verification.nModified === 0) {
+      // No document was modified, handle this scenario accordingly
+      return res.status(404).json({ message: "Verification not found." });
+    }
+
+    const message = "Your Email has been verified!";
+    const response = { message: message };
+    res.json(response);
   } catch (error) {
-    res.status(500).json({ message: "error.message" });
-    
+    console.error(error);
+    res.status(500).json({ message: error.message });
   }
 };
+
 //smtp check
 export const registerUser = async (req, res) => {
   const salt = await bcrypt.genSalt(10);
