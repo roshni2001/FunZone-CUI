@@ -44,10 +44,10 @@ export const VerifyMail = async (req, res) => {
       { _id: verificationId },
       { $set: { isVerified: true } }
     );
- const message = "Your Email has been verified!";
-    const response = { message: message };
-    res.json(response);
-    console.log(verification);
+//  const message = "Your Email has been verified!";
+//     const response = { message: message };
+//     res.json(response);
+//     console.log(verification);
 
     
 
